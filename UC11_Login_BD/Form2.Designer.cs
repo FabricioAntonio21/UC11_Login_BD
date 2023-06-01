@@ -44,6 +44,7 @@
             this.dataGridView_PRODUTOS = new System.Windows.Forms.DataGridView();
             this.button_ATUALIZAR = new System.Windows.Forms.Button();
             this.button_ALTERAR = new System.Windows.Forms.Button();
+            this.button_COMPRAR = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_PRODUTOS)).BeginInit();
             this.SuspendLayout();
             // 
@@ -127,7 +128,7 @@
             // label_INFORMATIVO
             // 
             this.label_INFORMATIVO.AutoSize = true;
-            this.label_INFORMATIVO.Location = new System.Drawing.Point(608, 382);
+            this.label_INFORMATIVO.Location = new System.Drawing.Point(608, 407);
             this.label_INFORMATIVO.Name = "label_INFORMATIVO";
             this.label_INFORMATIVO.Size = new System.Drawing.Size(35, 13);
             this.label_INFORMATIVO.TabIndex = 9;
@@ -172,6 +173,7 @@
             this.dataGridView_PRODUTOS.Name = "dataGridView_PRODUTOS";
             this.dataGridView_PRODUTOS.Size = new System.Drawing.Size(338, 317);
             this.dataGridView_PRODUTOS.TabIndex = 13;
+            this.dataGridView_PRODUTOS.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_PRODUTOS_CellContentClick);
             this.dataGridView_PRODUTOS.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_PRODUTOS_CellEndEdit);
             this.dataGridView_PRODUTOS.SelectionChanged += new System.EventHandler(this.dataGridView_PRODUTOS_SelectionChanged);
             // 
@@ -195,12 +197,23 @@
             this.button_ALTERAR.UseVisualStyleBackColor = true;
             this.button_ALTERAR.Click += new System.EventHandler(this.button_ALTERAR_Click);
             // 
+            // button_COMPRAR
+            // 
+            this.button_COMPRAR.Location = new System.Drawing.Point(450, 373);
+            this.button_COMPRAR.Name = "button_COMPRAR";
+            this.button_COMPRAR.Size = new System.Drawing.Size(338, 23);
+            this.button_COMPRAR.TabIndex = 16;
+            this.button_COMPRAR.Text = "Comprar";
+            this.button_COMPRAR.UseVisualStyleBackColor = true;
+            this.button_COMPRAR.Click += new System.EventHandler(this.button_COMPRAR_Click);
+            // 
             // Form_PRODUTO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::UC11_Login_BD.Properties.Resources.estoque_bg;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button_COMPRAR);
             this.Controls.Add(this.button_ALTERAR);
             this.Controls.Add(this.button_ATUALIZAR);
             this.Controls.Add(this.dataGridView_PRODUTOS);
@@ -243,5 +256,6 @@
         private System.Windows.Forms.DataGridView dataGridView_PRODUTOS;
         private System.Windows.Forms.Button button_ATUALIZAR;
         private System.Windows.Forms.Button button_ALTERAR;
+        private System.Windows.Forms.Button button_COMPRAR;
     }
 }

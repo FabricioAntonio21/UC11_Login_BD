@@ -20,7 +20,7 @@ namespace UC11_Login_BD
         public Form_TELALOGIN()
         {
             InitializeComponent();
-            servidor = "Server=localhost;Database=login_bd;Uid=root;Pwd=";
+            servidor = "Server=localhost;Database=vendas_porta_a_porta;Uid=root;Pwd=";
             conexao = new MySqlConnection(servidor);
             comando = conexao.CreateCommand();
 
@@ -36,7 +36,7 @@ namespace UC11_Login_BD
             try
             {
                 conexao.Open();
-                comando.CommandText = "SELECT usuario, senha FROM tbl_usuários WHERE usuario = '" + textBox_USUARIO.Text + "' AND senha = '" + textBox_SENHA.Text + "';";
+                comando.CommandText = "SELECT usuario, senha FROM tbl_usuario WHERE usuario = '" + textBox_USUARIO.Text + "' AND senha = '" + textBox_SENHA.Text + "';";
 
                 MySqlDataReader resultado = comando.ExecuteReader();
                 if (resultado.Read())
@@ -82,7 +82,7 @@ namespace UC11_Login_BD
             try
             {
                 conexao.Open();
-                comando.CommandText = "SELECT usuario, senha FROM tbl_usuários WHERE usuario = '" + textBox_USUARIO.Text + "';";
+                comando.CommandText = "SELECT usuario, senha FROM tbl_usuario WHERE usuario = '" + textBox_USUARIO.Text + "';";
 
                 MySqlDataReader valida_usuario = comando.ExecuteReader();
 
@@ -95,7 +95,7 @@ namespace UC11_Login_BD
                 {
                     conexao.Close();
                     conexao.Open();
-                    comando.CommandText = "INSERT INTO tbl_usuários (usuario, senha) VALUES ('" + textBox_USUARIO.Text + "', '" + textBox_SENHA.Text + "');";
+                    comando.CommandText = "INSERT INTO tbl_usuario (nome, usuario, senha) VALUES ('" + textBox_NOME.Text + "', '" + textBox_USUARIO.Text + "', '" + textBox_SENHA.Text + "');";
                     comando.ExecuteNonQuery();
                     MessageBox.Show("Usuário Cadastrado com sucesso!");
                 } if (textBox_USUARIO.Text != "" && textBox_SENHA.Text != "")
@@ -136,6 +136,7 @@ namespace UC11_Login_BD
         {
             textBox_USUARIO.Clear();
             textBox_SENHA.Clear();
+            textBox_NOME.Clear();
             label_LOGIN.Text = "";
         }
     }

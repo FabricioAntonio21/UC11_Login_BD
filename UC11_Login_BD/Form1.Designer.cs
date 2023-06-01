@@ -37,6 +37,8 @@
             this.button_LIMPAR = new System.Windows.Forms.Button();
             this.button_CADASTRAR = new System.Windows.Forms.Button();
             this.label_LOGIN = new System.Windows.Forms.Label();
+            this.textBox_NOME = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox_USUARIO
@@ -137,6 +139,25 @@
             this.label_LOGIN.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label_LOGIN.Click += new System.EventHandler(this.label_LOGIN_Click);
             // 
+            // textBox_NOME
+            // 
+            this.textBox_NOME.Location = new System.Drawing.Point(204, 100);
+            this.textBox_NOME.Name = "textBox_NOME";
+            this.textBox_NOME.Size = new System.Drawing.Size(227, 20);
+            this.textBox_NOME.TabIndex = 8;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(201, 79);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(50, 18);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Nome";
+            // 
             // Form_TELALOGIN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -145,6 +166,8 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(638, 555);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.textBox_NOME);
             this.Controls.Add(this.label_LOGIN);
             this.Controls.Add(this.button_CADASTRAR);
             this.Controls.Add(this.button_LIMPAR);
@@ -173,6 +196,8 @@
         private System.Windows.Forms.Button button_LIMPAR;
         private System.Windows.Forms.Button button_CADASTRAR;
         private System.Windows.Forms.Label label_LOGIN;
+        private System.Windows.Forms.TextBox textBox_NOME;
+        private System.Windows.Forms.Label label3;
     }
 }
 

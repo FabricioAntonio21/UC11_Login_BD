@@ -24,7 +24,7 @@ namespace UC11_Login_BD
 
             textBox_ID.Enabled = false;
 
-            servidor = "Server=localhost;Database=login_bd;Uid=root;Pwd=";
+            servidor = "Server=localhost;Database=vendas_porta_a_porta;Uid=root;Pwd=";
             conexao = new MySqlConnection(servidor);
             comando = conexao.CreateCommand();
 
@@ -40,7 +40,7 @@ namespace UC11_Login_BD
             try
             {
                 conexao.Open();
-                comando.CommandText = "SELECT * FROM venda_online_bd;";
+                comando.CommandText = "SELECT * FROM tbl_produtos;";
 
                 MySqlDataAdapter adaptadorPRODUTOS = new MySqlDataAdapter(comando);
                 DataTable tabelaPRODUTOS = new DataTable();
@@ -50,7 +50,7 @@ namespace UC11_Login_BD
                 dataGridView_PRODUTOS.DataSource = tabelaPRODUTOS;
                 dataGridView_PRODUTOS.Columns["id"].HeaderText = "Código";
                 dataGridView_PRODUTOS.Columns["descricao_produto"].HeaderText = "Descrição";
-                dataGridView_PRODUTOS.Columns["categoria_produtos"].HeaderText = "Categoria";
+                dataGridView_PRODUTOS.Columns["categoria_produto"].HeaderText = "Categoria";
                 dataGridView_PRODUTOS.Columns["preco_produto"].HeaderText = "Preço";
 
 
@@ -78,7 +78,7 @@ namespace UC11_Login_BD
             try
             {
                 conexao.Open();
-                comando.CommandText = "SELECT descricao_produto, categoria_produtos FROM venda_online_bd WHERE descricao_produto = '" + textBox_CADASTRO.Text + "' AND categoria_produtos = '" + textBox_CATEGORIA.Text + "';";
+                comando.CommandText = "SELECT descricao_produto, categoria_produto FROM tbl_produtos WHERE descricao_produto = '" + textBox_CADASTRO.Text + "' AND categoria_produto = '" + textBox_CATEGORIA.Text + "';";
 
                 MySqlDataReader resultado = comando.ExecuteReader();
                 if (resultado.Read())
@@ -96,7 +96,7 @@ namespace UC11_Login_BD
 
                     conexao.Close();
                     conexao.Open();
-                    comando.CommandText = "INSERT INTO venda_online_bd (descricao_produto, categoria_produtos, preco_produto) VALUES ('" + textBox_CADASTRO.Text + "', '" + textBox_CATEGORIA.Text + "', '" + textBox_PRECO.Text.Replace(",", ".") + "' );";
+                    comando.CommandText = "INSERT INTO tbl_produtos (descricao_produto, categoria_produto, preco_produto) VALUES ('" + textBox_CADASTRO.Text + "', '" + textBox_CATEGORIA.Text + "', '" + textBox_PRECO.Text.Replace(",", ".") + "' );";
                     comando.ExecuteNonQuery();
                     MessageBox.Show("Produto cadastrado com sucesso!");
 
@@ -128,7 +128,7 @@ namespace UC11_Login_BD
             try
             {
                 conexao.Open();
-                comando.CommandText = "DELETE FROM venda_online_bd WHERE id = '" + textBox_ID.Text + "';";
+                comando.CommandText = "DELETE FROM tbl_produtos WHERE id = '" + textBox_ID.Text + "';";
                 comando.ExecuteNonQuery();
 
                 label_INFORMATIVO.Text = "Produto apagado com sucesso";
@@ -148,7 +148,7 @@ namespace UC11_Login_BD
             try
             {
                 conexao.Open();
-                comando.CommandText = "SELECT * FROM venda_online_bd;";
+                comando.CommandText = "SELECT * FROM tbl_produtos;";
 
                 MySqlDataAdapter adaptadorPRODUTOS = new MySqlDataAdapter(comando);
                 DataTable tabelaPRODUTOS = new DataTable();
@@ -187,7 +187,7 @@ namespace UC11_Login_BD
             try
             {
                 conexao.Open();
-                comando.CommandText = "UPDATE venda_online_bd SET descricao_produto = '" + textBox_CADASTRO.Text + "' , categoria_produtos = '" + textBox_CATEGORIA.Text + "' , preco_produto = '" + textBox_PRECO.Text.Replace(",", ".") + "' WHERE id = '" + textBox_ID.Text + "';";
+                comando.CommandText = "UPDATE tbl_produtos SET descricao_produto = '" + textBox_CADASTRO.Text + "' , categoria_produtos = '" + textBox_CATEGORIA.Text + "' , preco_produto = '" + textBox_PRECO.Text.Replace(",", ".") + "' WHERE id = '" + textBox_ID.Text + "';";
                 comando.ExecuteNonQuery();
 
                 label_INFORMATIVO.Text = "Produto Modificado com Sucesso";
@@ -221,7 +221,7 @@ namespace UC11_Login_BD
                 else
                 {
 
-                    comando.CommandText = "UPDATE venda_online_bd SET descricao_produto = '" + dataGridView_PRODUTOS.CurrentRow.Cells[1].Value.ToString() + "' , categoria_produtos = '" + dataGridView_PRODUTOS.CurrentRow.Cells[2].Value.ToString() + "' , preco_produto = '" + dataGridView_PRODUTOS.CurrentRow.Cells[3].Value.ToString().Replace(".", ",") + "' WHERE id = '" + textBox_ID.Text + "';";
+                    comando.CommandText = "UPDATE tbl_produtos SET descricao_produto = '" + dataGridView_PRODUTOS.CurrentRow.Cells[1].Value.ToString() + "' , categoria_produtos = '" + dataGridView_PRODUTOS.CurrentRow.Cells[2].Value.ToString() + "' , preco_produto = '" + dataGridView_PRODUTOS.CurrentRow.Cells[3].Value.ToString().Replace(".", ",") + "' WHERE id = '" + textBox_ID.Text + "';";
                     comando.ExecuteNonQuery();
 
                     label_INFORMATIVO.Text = "Produto Modificado com Sucesso";
@@ -235,6 +235,18 @@ namespace UC11_Login_BD
             {
                 conexao.Close();
             }
+        }
+
+        private void button_COMPRAR_Click(object sender, EventArgs e)
+        {
+            Form Form_COMPRAS = new Form_COMPRAS();
+            Form_COMPRAS.Show();
+
+        }
+
+        private void dataGridView_PRODUTOS_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
